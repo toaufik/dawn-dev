@@ -1,0 +1,39 @@
+<div class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ 'your-logo-image-url.png' | asset_url }}" alt="Company Logo">
+      </div>
+      <nav class="footer-menu">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <!-- Add more menu items as needed -->
+        </ul>
+      </nav>
+      <div class="social-links">
+        <!-- Replace "#" with actual URLs -->
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <!-- Add more social media icons as needed -->
+      </div>
+      <div class="newsletter">
+        <h4>Subscribe to Our Newsletter</h4>
+        <form action="#" method="post">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}

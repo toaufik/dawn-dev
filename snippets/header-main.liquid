@@ -1,0 +1,50 @@
+{% assign main_menu_linklist = linklists[section.settings.main_menu].links %}
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <div class="logo-container">
+        {% if section.settings.logo %}
+          <a href={{ shop.url }}><img style="width:{{ section.settings.logo_width }}px;" src="{{ section.settings.logo | img_url: 'large' }}"></a>
+        {% else %}
+          <h1 class="text-logo">{{ shop.name }}</h1>
+        {% endif %}
+      </div>
+      <div class="menu-wrapper">
+        <ul class="menu-items">
+          {% for link in main_menu_linklist %}
+            <li class="single-menu-item">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+              {% if link.links.size > 0 %}
+                <ul class="menu dropdown-child">
+                  {% for child_link in link.links %}
+                    <li class="menu-link">
+                      <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="other-links">
+        <div class="sub-items">
+          <div class="search-icon">
+            <a href="{{ routes.search_url }}">Search</a>
+          </div>
+          <div class="account-icon">
+            {% if customer %}
+              <a href="{{ routes.account_logout_url }}">Logout</a>
+              {% else %}
+              <a href="{{ routes.account_login_url }}">Login</a>
+            {% endif %}
+          </div>
+          <div class="cart-icon">
+            <a href="{{ routes.cart_url }}">{% render 'icon-cart' %}</a>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </nav>
+  </div>
+</header>

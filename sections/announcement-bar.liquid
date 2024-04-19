@@ -1,0 +1,25 @@
+<div class="top-header">
+  <div class="container">
+    <p class="ann-bar">{{ section.settings.ann-bar-text }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ann-bar-text",
+      "label": "Add your text here",
+      "default": "Free Shipping over $99 all over US"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "category": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,134 @@
+{% assign footer_menu_items = linklists[section.settings.footer_menu].links %}
+
+<footer class="footer" id="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img
+          style="width:{{ section.settings.logo_width }}px;"
+          src="{{ section.settings.footer_logo | img_url: 'large' }}"
+        >
+        <p class="short-intro">{{ section.settings.intro_text }}</p>
+      </div>
+      <nav class="footer-menu">
+        <h3>{{ section.settings.menu_heading }}</h3>
+        <ul>
+          {% for link in footer_menu_items %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <div class="social-wrapper">
+        <h3>{{ section.settings.social_header }}</h3>
+        <div class="social-links">
+          <a href="{{ section.settings.facebook_url }}">{% render 'icon-facebook' %}</a>
+          <a href="{{ section.settings.twitter_url }}">{% render 'icon-twitter' %}</a>
+          <a href="{{ section.settings.instagram_url }}">{% render 'icon-instagram' %}</a>
+        </div>
+      </div>
+      <div class="newsletter">
+        <h3>{{ section.settings.newsletter_heading }}</h3>
+        <div class="form-wrapper">
+          {% form 'customer' %}
+            <div class="email">
+              <label for="email">{{ section.settings.newsletter_label }}</label>
+              <input type="email" name="contact[email]">
+            </div>
+
+            <div class="submit">
+              <input type="submit" value="Sign up">
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copy-container">
+    <p class="copyright">&copy; 2024 HDX, All rights reserved.</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Upload your logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Resize your logo",
+      "min": 80,
+      "max": 300,
+      "step": 20,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "id": "intro_text",
+      "label": "Add intro text",
+      "default": "Explore our curated collection of fashion-forward pieces designed to elevate your wardrobe.From everyday essentials to standout statements, find pieces that inspire confidence and reflect your unique personality"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Select your menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "menu_heading",
+      "label": "Add your heading for menu",
+      "default": "Quick Links"
+    },
+    {
+      "type": "text",
+      "id": "social_header",
+      "label": "Add your heading for Social media",
+      "default": "Follow Us"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Add your heading for newsletter",
+      "default": "Subscribe to Our Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "facebook_url",
+      "label": "Facebook URL",
+      "default": "https://www.facebook.com/"
+    },
+    {
+      "type": "text",
+      "id": "twitter_url",
+      "label": "Twitter URL",
+      "default": "https://twitter.com/"
+    },
+    {
+      "type": "text",
+      "id": "instagram_url",
+      "label": "Instagram URL",
+      "default": "https://www.instagram.com/"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_label",
+      "label": "Newsletter Label",
+      "default": "Enter your email"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}
